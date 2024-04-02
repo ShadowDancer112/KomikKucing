@@ -1,0 +1,18 @@
+---
+layout: base.njk
+title: Tags
+---
+
+<h1>
+	Tag Directory
+</h1>
+
+<ol aria-label="Tag pages">
+	{% for tag in collections | keys | sort %}
+		{% if tag !== "all" %}
+			<li>
+				<a href="/tagged/{{tag}}">{{tag}}</a>
+			</li>
+		{% endif %}
+	{% endfor %}
+</ol>

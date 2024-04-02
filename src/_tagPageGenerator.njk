@@ -1,0 +1,31 @@
+---
+layout: base.njk
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+  addAllPagesToCollections: true 
+  filter:
+    - all
+
+permalink: /tagged/{{ tag }}/
+
+eleventyComputed:
+  title: Tagged “{{ tag }}”
+
+addAllPagesToCollections: true 
+
+---
+<h1>Tagged “{{tag}}”</h1>
+
+<ol>
+  {% for page in tag %}
+    <li>
+      <a href="{{ page.url }}">{{ page.data.title or page.filePathStem }}</a>
+    </li>
+  {% endfor %}
+</ol>
+
+<p>
+  <a href="/tags">Back to tag directory</a>
+</p>

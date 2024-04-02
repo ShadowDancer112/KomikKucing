@@ -1,0 +1,19 @@
+<nav>
+	<h2>Navigation</h2>
+	<ul>
+		<li>
+			<a href="/">Home</a>
+		</li>
+		<li>
+			<a href="/tags">Tags</a>
+		</li>
+		<li>
+			<a href="/sitemap">Sitemap</a>
+		</li>
+		{% if options.enableContentWarnings %}
+			<li>
+				<a href="#" id="cw-dialogue">Content Options</a>
+			</li>
+		{% endif %}
+	</ul>
+</nav>
