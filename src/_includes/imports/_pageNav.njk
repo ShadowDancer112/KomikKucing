@@ -3,18 +3,18 @@
 		<ol>
 			{% if previousPage %}
 				<li class="first-page">
-					<a href="{{firstPage.url}}#content">First</a>
+					<a href="{{firstPage.url}}#content"><img src="/assets/img/first.svg" alt="First"></a>
 				</li>
 				<li class="previous-page">
-					<a href="{{previousPage.url}}#content">Previous</a>
+					<a href="{{previousPage.url}}#content"><img src="/assets/img/previous.svg" alt="Previous"></a>
 				</li>
 			{% endif %}
 			{% if nextPage %}
 				<li class="next-page">
-					<a href="{{nextPage.url}}#content">Next</a>
+					<a href="{{nextPage.url}}#content"><img src="/assets/img/next.svg" alt="Next"></a>
 				</li>
 				<li class="last-page">
-					<a href="{{lastPage.url}}#content">Last</a>
+					<a href="{{lastPage.url}}#content"><img src="/assets/img/last.svg" alt="Last"></a>
 				</li>
 			{% endif %}
 		</ol>
