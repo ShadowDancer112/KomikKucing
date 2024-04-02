@@ -19,9 +19,9 @@ addAllPagesToCollections: true
 <h1>Tagged “{{tag}}”</h1>
 
 <ol>
-  {% for page in tag %}
+  {% for tagPage in collections[tag] %}
     <li>
-      <a href="{{ page.url }}">{{ page.data.title or page.filePathStem }}</a>
+      <a href="{{ tagPage.url }}">{{ tagPage.data.title or tagPage.filePathStem }}</a>
     </li>
   {% endfor %}
 </ol>
