@@ -2,8 +2,16 @@
 layout: base.njk
 ---
 
+{% set coll = collections.comic %}
+{% set firstPage = coll[0] %}
+{% set previousPage = coll | getPreviousCollectionItem %}
+{% set nextPage = coll | getNextCollectionItem %}
+{% set lastPage = coll[ (coll | length) - 1 ] %}
+
 {% include "imports/_pageNav.njk" %}
 
-{{content | safe}}
+<div class="comic-content">
+	{{content | safe}}
+</div>
 
 {% include "imports/_pageNav.njk" %}

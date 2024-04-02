@@ -1,3 +1,4 @@
 {
-	"layout": "comicPage.njk"
+	"layout": "comicPage.njk",
+	"tags": [ "comic" ]
 }

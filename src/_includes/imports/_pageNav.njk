@@ -1,16 +1,20 @@
 <nav class="comic-navigation">
 	<ol>
-		<li class="first-page">
-			<a href="#">First</a>
-		</li>
-		<li class="previous-page">
-			<a href="#">Previous</a>
-		</li>
-		<li class="next-page">
-			<a href="#">Next</a>
-		</li>
-		<li class="last-page">
-			<a href="#">Last</a>
-		</li>
+		{% if previousPage %}
+			<li class="first-page">
+				<a href="{{firstPage.url}}">First</a>
+			</li>
+			<li class="previous-page">
+				<a href="{{previousPage.url}}">Previous</a>
+			</li>
+		{% endif %}
+		{% if nextPage %}
+			<li class="next-page">
+				<a href="{{nextPage.url}}">Next</a>
+			</li>
+			<li class="last-page">
+				<a href="{{lastPage.url}}">Last</a>
+			</li>
+		{% endif %}
 	</ol>
 </nav>
