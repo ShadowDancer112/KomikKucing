@@ -2,6 +2,7 @@
 layout: comicPage.njk
 ---
 {% set coll = collections.comic %}
+{% set firstPage = coll[0] %}
 {% set lastPage = coll[ (coll | length) - 1 ] %}
 {% set previousPage = coll | getPreviousCollectionItem(lastPage) %}
 {% set content = lastPage.templateContent %}
