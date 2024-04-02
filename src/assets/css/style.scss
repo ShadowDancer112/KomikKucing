@@ -1,14 +1,33 @@
 @use "sass:math";
 
+@mixin container {
+  border: 5px solid black;
+  border-radius: 1em;
+  background-color: #fff;
+  padding: 1.5em;
+}
+
+@mixin button {
+  display: block;
+  border: 3px solid #888;
+  border-radius: 1em;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 0.75em 1.5em;
+}
+
 :root {
   --color-text: #222;
-  --bg-body: #eee;
+  --bg-body: #ccc;
   --cw-shadow-color: rgba(0, 0, 0, 0.65);
   --cw-visible-color: rgba(0, 0, 0, 0.1);
 }
 
 body {
-  margin: 40px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  margin: 24px 0;
   background: var(--bg-body);
   padding: 0;
   overflow-x: hidden;
@@ -16,9 +35,43 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#content {
+#page-header {
+  @include container;
   width: 720px;
-  margin: auto;
+  text-align: center;
+
+  #logo {
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  nav {
+    margin: 1em 0 0;
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      padding: 0;
+    }
+
+    a {
+      @include button;
+    }
+  }
+}
+
+#content {
+  @include container;
+  width: 720px;
 }
 
 #skip-links {
@@ -27,8 +80,8 @@ body {
 
   a {
     position: relative;
-    color: black;
     background-color: white;
+    color: black;
 
     &:focus {
       top: 3em;
@@ -40,15 +93,15 @@ body {
   max-width: 640px;
 
   &::backdrop {
-    background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.85);
   }
 
   label {
-    font-style: italic;
+    display: inline-block;
     background: rgba(0, 0, 0, 0.1);
     padding: 5px;
-    display: inline-block;
+    font-style: italic;
   }
 }
 
@@ -61,22 +114,22 @@ body {
   }
 
   &:not([data-blurred]) .blur-inner {
-    background: var(--cw-visible-color);
     box-shadow: var(--cw-visible-color) 0px 0px 5px 5px;
+    background: var(--cw-visible-color);
   }
 
   .blur-warning {
     display: none;
-    font-style: italic;
     position: absolute;
     top: 0;
     left: 0;
+    transition: box-shadow 120ms;
+    box-shadow: var(--cw-shadow-color) 0px 0px 5px 5px;
+    background: var(--cw-shadow-color);
     width: 100%;
     height: 100%;
-    background: var(--cw-shadow-color);
-    box-shadow: var(--cw-shadow-color) 0px 0px 5px 5px;
     color: #eee;
-    transition: box-shadow 120ms;
+    font-style: italic;
   }
 
   &[data-blurred] .blur-warning {
@@ -89,7 +142,6 @@ body {
     box-shadow: var(--cw-shadow-color) 0px 0px 8px 8px;
   }
 }
-
 
 .lightbox-image {
   display: flex;
@@ -109,14 +161,14 @@ body {
 }
 
 #lb-overlay {
-  position: fixed;
   display: flex;
-  flex-direction: column;
+  position: fixed;
   top: 0;
   left: 0;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.85);
   min-width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
   overflow-x: auto;
 
   &[hidden] {
@@ -125,34 +177,34 @@ body {
 }
 
 #lb-metadata {
-  background: #eee;
-  width: 100%;
-  height: 100px;
-  box-sizing: border-box;
-  padding: 10px 10vw;
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
   position: fixed;
   bottom: 0;
   left: 0;
+  align-items: flex-start;
+  gap: 20px;
+  box-sizing: border-box;
+  background: #eee;
+  padding: 10px 10vw;
+  width: 100%;
+  height: 100px;
 }
 
 #lb-caption {
-  text-align: right;
-  font-size: 1.5em;
   width: 50%;
+  font-size: 1.5em;
+  text-align: right;
 }
 
 #lb-metalist {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px 15px;
+  margin-right: 20px;
+  padding-right: 20px;
   width: 50%;
   max-height: 100%;
-  display: grid;
-  gap: 5px 15px;
-  grid-template-columns: repeat(2, 1fr);
   overflow-y: auto;
-  padding-right: 20px;
-  margin-right: 20px;
 
   & > tr {
     display: flex;
@@ -169,17 +221,17 @@ body {
 }
 
 #lb-preview {
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  min-width: 100vw;
-  height: calc(100vh - 100px);
-  padding: 40px;
+  cursor: pointer;
   box-sizing: border-box;
   margin: 0;
+  padding: 40px;
+  min-width: 100vw;
+  height: calc(100vh - 100px);
 
   > * {
     cursor: initial;
@@ -189,4 +241,20 @@ body {
 #lb-img {
   max-width: min(1200px, 100%);
   max-height: calc(100vh - 180px);
+}
+
+.comic-navigation {
+  ol {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1em;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    @include button;
+  }
 }

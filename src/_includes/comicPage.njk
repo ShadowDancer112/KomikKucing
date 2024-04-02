@@ -8,6 +8,8 @@ layout: base.njk
 {% set nextPage = coll | getNextCollectionItem %}
 {% set lastPage = coll[ (coll | length) - 1 ] %}
 
+<h1>{{title}}</h1>
+
 {% include "imports/_pageNav.njk" %}
 
 <div class="comic-content">

@@ -8,9 +8,10 @@ date: Last Modified
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>{{metadata.title}} {{"| " + title if title}}</title>
+		<title>{{metadata.title}}
+			{{"| " + title if title}}</title>
 
-  	{% favicon './src/assets/favicon.svg' %}
+		{% favicon './src/assets/favicon.svg' %}
 		<link rel="stylesheet" href="{{metadata.assets.css}}/style.css">
 
 		{% for theme in pageThemes %}
@@ -24,7 +25,7 @@ date: Last Modified
 		{% if options.enableLightbox %}
 			<script src="{{metadata.assets.js}}/lightbox.js"></script>
 		{% endif %}
-		
+
 		{% if options.enableWidgets %}
 			<script src="{{metadata.assets.js}}/widgets.js"></script>
 		{% endif %}
@@ -35,7 +36,10 @@ date: Last Modified
 			<a href="#content">Jump to main content</a>
 		</div>
 
-		<header>
+		<header id="page-header">
+			<a href="/" id="logo">
+				<img src="/assets/img/logo.png" alt="{{metadata.title}}">
+			</a>
 			{% include "imports/_nav.njk" %}
 		</header>
 
@@ -46,7 +50,7 @@ date: Last Modified
 		{% if options.enableContentWarnings %}
 			{% include "imports/_contentWarning.njk" %}
 		{% endif %}
-		
+
 		{% if options.enableLightbox %}
 			{% include "imports/_lightbox.njk" %}
 		{% endif %}
