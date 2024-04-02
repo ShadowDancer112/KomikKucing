@@ -18,4 +18,8 @@ layout: base.njk
 
 {% include "imports/_pageNav.njk" %}
 
+{% if date %}
+	<p class="date">{{date | formatDate}}</p>
+{% endif %}
+
 <script src="{{metadata.assets.js}}/arrowNavigation.js"></script>
