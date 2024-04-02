@@ -3,6 +3,7 @@ layout: comicPage.njk
 ---
 
 {% set coll = collections.comicPages %}
+{% set firstPage = coll[0] %}
 {% set lastPage = coll[ (coll | length) - 1 ] %}
 
 {% if not currentPage %}
