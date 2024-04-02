@@ -1,3 +1,4 @@
 ---
-layout: latestPage.njk
+layout: homepage.njk
+title: Home
 ---
