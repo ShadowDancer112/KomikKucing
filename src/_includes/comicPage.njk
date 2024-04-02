@@ -10,6 +10,10 @@ layout: base.njk
 
 <h1>{{title}}</h1>
 
+{% if date %}
+	<p class="date">{{date | formatDate}}</p>
+{% endif %}
+
 {% include "imports/_pageNav.njk" %}
 
 <div class="comic-content">
@@ -17,9 +21,5 @@ layout: base.njk
 </div>
 
 {% include "imports/_pageNav.njk" %}
-
-{% if date %}
-	<p class="date">{{date | formatDate}}</p>
-{% endif %}
 
 <script src="{{metadata.assets.js}}/arrowNavigation.js"></script>
