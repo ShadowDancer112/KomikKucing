@@ -17,11 +17,7 @@ module.exports = function (eleventyConfig) {
 
 		const timezoneOffset = date.getTimezoneOffset();
 		date.setMinutes(date.getMinutes() + timezoneOffset);
-	
-		const day = date.getDate();
-		const suffixes = ["th", "st", "nd", "rd"];
-		const suffix = suffixes[(day - 20) % 10] || suffixes[day] || suffixes[0];
-		const formattedDate = day + suffix + " " + date.toLocaleString("en-US", { month: "long", year: "numeric" });
+		const formattedDate = date.toLocaleString("en-US", { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
 		return formattedDate;
 	};
 
