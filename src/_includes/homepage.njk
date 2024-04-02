@@ -1,10 +1,16 @@
 ---
 layout: comicPage.njk
 ---
-{% set coll = collections.comic %}
-{% set firstPage = coll[0] %}
+
+{% set coll = collections.comicPages %}
 {% set lastPage = coll[ (coll | length) - 1 ] %}
-{% set previousPage = coll | getPreviousCollectionItem(lastPage) %}
+
+{% if not currentPage %}
+	{% set currentPage = lastPage %}
+{% endif %}
+
+{% set previousPage = coll | getPreviousCollectionItem(currentPage) %}
+{% set nextPage = coll | getNextCollectionItem(currentPage) %}
 {% set content = lastPage.templateContent %}
 
 {% include "imports/_pageNav.njk" %}
