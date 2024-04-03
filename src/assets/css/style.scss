@@ -9,7 +9,7 @@
 
 @mixin button {
   display: block;
-  border-radius: .5em;
+  border-radius: 0.5em;
   background-color: rgba(0, 0, 0, 0.3);
   padding: 1em;
   color: black;
@@ -70,7 +70,7 @@ body {
 
     li {
       flex-grow: 1;
-      padding: 0
+      padding: 0;
     }
 
     a {
@@ -266,5 +266,31 @@ h1 {
     margin: 0;
     padding: 0;
     list-style: none;
+  }
+}
+
+.authors-note {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  .an-container {
+    border: 3px solid #888;
+  }
+
+  header {
+    background-color: #ccc;
+    padding: 0.5em;
+  }
+
+  main {
+    padding: 1em;
+
+    .an-avatar {
+      float: left;
+      margin: 0 1em 1em 0;
+      width: 150px;
+      height: 150px;
+    }
   }
 }
