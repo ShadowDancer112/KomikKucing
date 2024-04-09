@@ -11,17 +11,16 @@
     "11ty",
     "eleventy-template"
   ],
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/portfiend/eleventy-template.git"
-	},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/portfiend/eleventy-template.git"
+  },
   "author": "portfiend",
   "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@grimlink/eleventy-plugin-sass": "^1.0.3",
     "@mdit/plugin-attrs": "^0.7.0",
-    "eleventy-favicon": "^1.1.3",
     "eslint": "^8.54.0",
     "markdown-it-div": "^1.1.0",
     "sass": "^1.69.5"
