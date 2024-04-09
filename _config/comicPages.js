@@ -8,21 +8,21 @@ module.exports = function (eleventyConfig) {
 
 			const partsA = a.split("/");
 			const partsB = b.split("/");
-		
+
 			for (let i = 0; i < Math.min(partsA.length, partsB.length); i++) {
 				const segA = partsA[i];
 				const segB = partsB[i];
-		
+
 				const segNumA = parseInt(segA.match(/\d+$/), 10);
 				const segNumB = parseInt(segB.match(/\d+$/), 10);
-		
+
 				if (!isNaN(segNumA) && !isNaN(segNumB)) {
 					if (segNumA !== segNumB) {
 						return segNumA - segNumB;
 					}
 				} else if (!isNaN(segNumA) && isNaN(segNumB)) {
 					return -1;
-				} else if (isNaN(segNumA) && !isNaN(segNumB)) { 
+				} else if (isNaN(segNumA) && !isNaN(segNumB)) {
 					return 1;
 				} else {
 					const comparison = segA.localeCompare(segB);
@@ -31,11 +31,25 @@ module.exports = function (eleventyConfig) {
 					}
 				}
 			}
-		
+
 			return partsA.length - partsB.length;
 		});
 
 		return taggedPages;
+	}
+
+	function sortPagesByDirectory(collection) {
+		const sortedPages = {};
+
+		collection.forEach(page => {
+			const [ , directory ] = page.filePathStem.match(new RegExp("^/page/(.*)/"));
+			if (!sortedPages[directory]) {
+				sortedPages[directory] = [];
+			}
+			sortedPages[directory].push(page);
+		});
+
+		return sortedPages;
 	}
 
 	function getComicPageByUrl(url) {
@@ -50,4 +64,5 @@ module.exports = function (eleventyConfig) {
 
 	eleventyConfig.addCollection("comicPages", comicPages);
 	eleventyConfig.addFilter("getComicPageByUrl", getComicPageByUrl);
+	eleventyConfig.addFilter("sortPagesByDirectory", sortPagesByDirectory);
 };
