@@ -1,6 +1,7 @@
 {
 	"showSiteContentWarning": true,
 	"showAdultContentWarning": true,
+	"showOnFirstEnter": false,
 	"mustBeAdult": false,
 	"siteWarnings": {
 		"flash": {
