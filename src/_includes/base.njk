@@ -1,3 +1,7 @@
+---
+thumbnail: thumbnail.png
+---
+
 <!DOCTYPE html>
 <html lang="{{metadata.language}}">
 	<head>
@@ -5,6 +9,16 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>{{metadata.title}}{{" | " + title if title}}</title>
+
+		{% if title %}
+			<meta property="og:title" content="{{title}}">
+		{% endif %}
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="{{metadata.url}}">
+		<meta property="og:image" content="{{metadata.url}}{{metadata.assets.img}}/{{thumbnail}}">
+		<meta property="og:description" content="{{metadata.subtitle}}">
+		<meta property="og:site_name" content="{{metadata.title}}">
+		<meta property="og:locale" content="{{metadata.locale}}">
 
 		<link rel="icon" type="image/png" href="/assets/img/favicon.png">
 		<link rel="stylesheet" href="{{metadata.assets.css}}/style.css">
@@ -27,9 +41,7 @@
 
 		<script src="https://unpkg.com/swup@4"></script>
 		<script>
-			const swup = new Swup({
-				containers: ['#content'],
-			});
+			const swup = new Swup({containers: ['#content']});
 		</script>
 	</head>
 	<body>
