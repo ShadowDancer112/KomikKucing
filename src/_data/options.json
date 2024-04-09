@@ -1,5 +1,6 @@
 { 
 	"enableContentWarnings": true,
 	"enableLightbox": true,
-	"enableWidgets": true
+	"enableWidgets": true,
+	"enableSaveLoadButtons": true
 }
