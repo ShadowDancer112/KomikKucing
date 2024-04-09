@@ -38,6 +38,7 @@ body {
   background: var(--bg-body);
   padding: 0;
   overflow-x: hidden;
+  overflow-y: scroll;
   color: var(--color-text);
   font-family: Arial, Helvetica, sans-serif;
 }
