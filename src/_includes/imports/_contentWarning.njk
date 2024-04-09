@@ -1,4 +1,4 @@
-{% if contentWarning.showAdultContentWarning or contentWarning.showSiteContentWarning %}
+{% if options.enableContentWarnings %}
 	<dialog id="content-warning" autofocus>
 		{% if contentWarning.showAdultContentWarning %}
 			<p>
@@ -52,29 +52,31 @@
 		{{ warnings.unshift("adult") and "" }}
 	{% endif %}
 	<script>
-		{ 
+		{
 			const dialog = document.querySelector("dialog#content-warning");
 			const alreadyDone = localStorage.getItem("cw-confirm");
 			initializeContentWarning('{{warnings | dump | safe }}');
-			if (alreadyDone !== "true") {
-				dialog.showModal();
-			}
+			{% if contentWarning.showOnFirstEnter %}
+				if (alreadyDone !== "true") {
+					dialog.showModal();
+				}
+			{% endif %}
 		}
 	</script>
 
 	<style>
 		{% for warning in warnings %}
-			body:not(.optIn-{{warning}}) .cw-{{warning}} {
+			body:not(.optIn-{{warning}}) .cw-{{warning}}{
 				display: none;
-			} 
+			}
 
 			.blur-content {
-    		cursor: pointer;
-			} 
+				cursor: pointer;
+			}
 
 			.blur-content[data-blurred] .blur-inner {
-    		filter: blur(5px);
-			} 
+				filter: blur(5px);
+			}
 		{% endfor %}
 	</style>
 {% endif %}
@@ -88,13 +90,16 @@
 					window.location.href = "../"
 				}
 			}
-			
-			document.body.addEventListener("updateContentSettings", forceRedirect);
-			
-			{ 
+
+			document
+				.body
+				.addEventListener("updateContentSettings", forceRedirect);
+
+			{
 				const alreadyDone = localStorage.getItem("cw-confirm");
-				if (alreadyDone) forceRedirect();
-			}
+				if (alreadyDone) 
+					forceRedirect();
+				}
 		</script>
 	{% elif contentWarningForceEjects is iterable %}
 		<script>
@@ -109,11 +114,14 @@
 				}
 			}
 
-			document.body.addEventListener("updateContentSettings", forceRedirect);
-			{ 
+			document
+				.body
+				.addEventListener("updateContentSettings", forceRedirect);
+			{
 				const alreadyDone = localStorage.getItem("cw-confirm");
-				if (alreadyDone) forceRedirect();
-			}
+				if (alreadyDone) 
+					forceRedirect();
+				}
 		</script>
 	{% endif %}
 {% endif %}
