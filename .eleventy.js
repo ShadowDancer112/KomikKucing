@@ -1,4 +1,5 @@
 const fs = require("fs");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
 const eleventySass = require("@grimlink/eleventy-plugin-sass");
 const sass = require("sass");
 
@@ -11,6 +12,7 @@ module.exports = function (eleventyConfig) {
 		}
 	};
 
+	eleventyConfig.addPlugin(pluginRss);
 	eleventyConfig.addPlugin(eleventySass, { sass, outputPath: null });
 
 	eleventyConfig.addPassthroughCopy("./src/assets/");

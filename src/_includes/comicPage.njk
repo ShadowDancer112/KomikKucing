@@ -21,6 +21,11 @@ layout: base.njk
 </div>
 
 {% include "imports/_pageNav.njk" %}
+
+{% if not disableSaveLoad %}
+	{% include "imports/_saveLoad.njk" %}
+{% endif %}
+
 {% include "imports/_authorNote.njk" %}
 
 <script src="{{metadata.assets.js}}/arrowNavigation.js"></script>

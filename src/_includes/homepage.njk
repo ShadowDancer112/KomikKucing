@@ -1,5 +1,6 @@
 ---
 layout: comicPage.njk
+disableSaveLoad: true
 ---
 
 {% set coll = collections.comicPages %}
@@ -15,6 +16,8 @@ layout: comicPage.njk
 {{ content | safe }}
 
 {% include "imports/_pageNav.njk" %}
+
+{% include "imports/_saveLoad.njk" %}
 
 {% set authorNote = lastPage.data.authorNote %}
 {% include "imports/_authorNote.njk" %}

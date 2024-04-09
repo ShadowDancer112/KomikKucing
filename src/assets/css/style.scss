@@ -15,6 +15,7 @@
   color: black;
   font-weight: bold;
   text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.7);
@@ -293,5 +294,20 @@ h1 {
       width: 150px;
       height: 150px;
     }
+  }
+}
+
+.save-load-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 0.5em 0;
+
+  button {
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    @include button;
   }
 }
