@@ -1,0 +1,22 @@
+{% if previousPage or nextPage %}
+	<nav class="comic-navigation">
+		<ol>
+			{% if previousPage %}
+				<li class="first-page">
+					<a href="{{firstPage.url}}"><img src="/assets/img/first.svg" alt="First"></a>
+				</li>
+				<li class="previous-page">
+					<a href="{{previousPage.url}}"><img src="/assets/img/previous.svg" alt="Previous"></a>
+				</li>
+			{% endif %}
+			{% if nextPage %}
+				<li class="next-page">
+					<a href="{{nextPage.url}}"><img src="/assets/img/next.svg" alt="Next"></a>
+				</li>
+				<li class="last-page">
+					<a href="{{lastPage.url}}"><img src="/assets/img/last.svg" alt="Last"></a>
+				</li>
+			{% endif %}
+		</ol>
+	</nav>
+{% endif %}

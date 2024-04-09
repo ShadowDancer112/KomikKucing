@@ -1,0 +1,13 @@
+---
+layout: base.njk
+---
+
+<h1>Archive</h1>
+
+<ol>
+  {% for comicPage in collections.comicPages %}
+    <li>
+      <a href="{{ comicPage.url }}">{{ comicPage.data.title or comicPage.filePathStem }}</a>
+    </li>
+  {% endfor %}
+</ol>

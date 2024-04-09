@@ -1,1 +1,0 @@
-Feel free to specify your global character permissions in this file.

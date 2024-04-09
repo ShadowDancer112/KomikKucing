@@ -1,0 +1,16 @@
+{% if authorNote and authorNote.description %}
+	<article class="authors-note">
+		<h2>Author's Notes:</h2>
+		<div class="an-container">
+			<header id="an-header">
+				<b>{{ authorNote.name }}</b>
+			</header>
+			<main id="an-content">
+				<img src="{{metadata.assets.img}}/{{authorNote.avatar}}" alt="{{authorNote.name}}" class="an-avatar">
+				{% renderMarkdown %}
+				{{ authorNote.description }}
+				{% endrenderMarkdown %}
+			</main>
+		</div>
+	</article>
+{% endif %}

@@ -1,0 +1,26 @@
+---
+layout: base.njk
+---
+
+{% set coll = collections.comicPages %}
+{% set firstPage = coll[0] %}
+{% set lastPage = coll[ (coll | length) - 1 ] %}
+{% set previousPage = coll | getPreviousCollectionItem %}
+{% set nextPage = coll | getNextCollectionItem %}
+
+<h1>{{title}}</h1>
+
+{% if date %}
+	<p class="date">{{date | formatDate}}</p>
+{% endif %}
+
+{% include "imports/_pageNav.njk" %}
+
+<div class="comic-content">
+	{{content | safe}}
+</div>
+
+{% include "imports/_pageNav.njk" %}
+{% include "imports/_authorNote.njk" %}
+
+<script src="{{metadata.assets.js}}/arrowNavigation.js"></script>

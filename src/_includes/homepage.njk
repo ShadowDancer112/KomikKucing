@@ -1,0 +1,20 @@
+---
+layout: comicPage.njk
+---
+
+{% set coll = collections.comicPages %}
+{% set firstPage = coll[0] %}
+{% set lastPage = coll[ (coll | length) - 1 ] %}
+{% set currentPage = lastPage %}
+{% set previousPage = coll | getPreviousCollectionItem(currentPage) %}
+{% set nextPage = coll | getNextCollectionItem(currentPage) %}
+{% set content = lastPage.templateContent %}
+
+{% include "imports/_pageNav.njk" %}
+
+{{ content | safe }}
+
+{% include "imports/_pageNav.njk" %}
+
+{% set authorNote = lastPage.data.authorNote %}
+{% include "imports/_authorNote.njk" %}
