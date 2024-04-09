@@ -1,12 +1,13 @@
 {
 	"title": "Website Name",
 	"subtitle": "Your website subtitle",
-	"url": "https://example.com/",
+	"url": "https://example.com",
 	"author": {
 		"name": "Your name here",
 		"email": "name@example.com"
 	},
 	"language": "en",
+	"locale": "en_US",
 	"assets": {
 		"css": "/assets/css",
 		"img": "/assets/img",
