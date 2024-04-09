@@ -1,5 +1,11 @@
 {
 	"title": "Website Name",
+	"subtitle": "Your website subtitle",
+	"url": "https://example.com/",
+	"author": {
+		"name": "Your name here",
+		"email": "name@example.com"
+	},
 	"language": "en",
 	"assets": {
 		"css": "/assets/css",
